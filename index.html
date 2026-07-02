@@ -14,7 +14,7 @@
 }
 
 body{
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Monserrat, Helvetica, sans-serif;
     background:transparent;
     padding:20px;
     display:flex;
@@ -81,8 +81,6 @@ h1{
 
 <div class="container">
 
-<h1 id="eventTitle"></h1>
-
 <div class="countdown">
 
 <div class="box">
@@ -115,13 +113,9 @@ h1{
    SETTINGS
 ========================== */
 
-const EVENT_NAME = "";
-
 const TARGET_DATE = "2026-07-11T23:59:59";
 
 /* ========================== */
-
-document.getElementById("eventTitle").textContent = EVENT_NAME;
 
 const target = new Date(TARGET_DATE).getTime();
 
