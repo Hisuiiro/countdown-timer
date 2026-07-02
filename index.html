@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Countdown Timer</title>
+
+<style>
+body{
+    margin:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:transparent;
+    font-family:Arial, sans-serif;
+}
+
+.countdown{
+    display:flex;
+    gap:20px;
+    text-align:center;
+}
+
+.box{
+    background:#ffffff;
+    padding:15px 20px;
+    border-radius:15px;
+    box-shadow:0 4px 10px rgba(0,0,0,.15);
+    min-width:90px;
+}
+
+.number{
+    font-size:40px;
+    font-weight:bold;
+    color:#4B4B4B;
+}
+
+.label{
+    font-size:14px;
+    color:#777;
+    margin-top:5px;
+    text-transform:uppercase;
+}
+</style>
+</head>
+
+<body>
+
+<div class="countdown">
+    <div class="box">
+        <div class="number" id="days">00</div>
+        <div class="label">Days</div>
+    </div>
+
+    <div class="box">
+        <div class="number" id="hours">00</div>
+        <div class="label">Hours</div>
+    </div>
+
+    <div class="box">
+        <div class="number" id="minutes">00</div>
+        <div class="label">Minutes</div>
+    </div>
+
+    <div class="box">
+        <div class="number" id="seconds">00</div>
+        <div class="label">Seconds</div>
+    </div>
+</div>
+
+<script>
+// Set your target date here
+const targetDate = new Date("December 31, 2026 23:59:59").getTime();
+
+const timer = setInterval(function(){
+
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    if(distance <= 0){
+        clearInterval(timer);
+
+        document.getElementById("days").innerHTML = "00";
+        document.getElementById("hours").innerHTML = "00";
+        document.getElementById("minutes").innerHTML = "00";
+        document.getElementById("seconds").innerHTML = "00";
+
+        return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("days").innerHTML = String(days).padStart(2,"0");
+    document.getElementById("hours").innerHTML = String(hours).padStart(2,"0");
+    document.getElementById("minutes").innerHTML = String(minutes).padStart(2,"0");
+    document.getElementById("seconds").innerHTML = String(seconds).padStart(2,"0");
+
+},1000);
+</script>
+
+</body>
+</html>
